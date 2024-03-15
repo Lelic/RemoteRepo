@@ -74,7 +74,7 @@ git init
 
 + `git checkout HASH_CODE` или `git checkout BranchName` - переключиться на коммит с хэш-кодом "*HASH_CODE*" или названием "*BranchName*"
 + `git checkout master` - переход к актуальному (текущему) состоянию для продолжения работы
-+ `git switch HASH_CODE` или `git switch BranchName`- переключиться на коммит с хэш-кодом "*HASH_CODE*" или названием "*BranchName*" (актуальная команда для переключения) 
++ `git switch HASH_CODE` или `git switch BranchName`- переключиться на коммит с хэш-кодом "*HASH_CODE*" или названием "*BranchName*" (актуальная команда для переключения)
 
 ### 5.5 Игнорирование файлов
 
@@ -160,5 +160,35 @@ git branch-d BranchNameForDeleting
 
 ```bash
 git clone RepoURLAddress
-
 ```
+
+`RepoURLAddress` - URL адрес удалённого репозитрия
+
+### 5.7.3 Связь удалённого репозитория с существующим локальным
+
+Скопировать команды из GitHub или ввести вручную:
+1. Команда `Git remote`
+
+```bash
+git remote add REPO_ALIAS RepoURLAddress
+````
+
+`REPO_ALIAS` - имя (алиас) удаленного репозитория на локальной машине
+
+`RepoURLAddress` - URL адрес удалённого репозитрия
+
+2. Команда `git branch`
+
+```bash
+git branch -M BRANCH_NAME
+```
+
+Ключ `-M` для переименования текущей ветки в `BRANCH_NAME` для того, чтобы она соответствовала названию ветки в удалённом репозитории (обычно `main`)
+
+3. Команда `git push`
+
+```bash
+git push -u origin main
+```
+
+Для помещения текщуего коммита в ветку `main` репозитория `origin`
